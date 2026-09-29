@@ -1,0 +1,165 @@
+{
+  "entities": {
+    "students": {
+      "title": "Student Profiles",
+      "description": "Student profile details indexed by Firebase Auth UID or student ID",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "rollNo": { "type": "string" },
+        "rollNumber": { "type": "string" },
+        "department": { "type": "string" },
+        "email": { "type": "string" },
+        "barcode": { "type": "string" },
+        "year": { "type": "string" },
+        "batch": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "emailVerified": { "type": "boolean" }
+      },
+      "required": ["name", "department", "email"]
+    },
+    "users": {
+      "title": "User Profiles",
+      "description": "User profile details indexed by Firebase Auth UID",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "rollNumber": { "type": "string" },
+        "staffId": { "type": "string" },
+        "department": { "type": "string" },
+        "position": { "type": "string" },
+        "year": { "type": "string" },
+        "batch": { "type": "string" },
+        "phone": { "type": "string" },
+        "avatar": { "type": "string" },
+        "maxBorrowLimit": { "type": "number" },
+        "joinedDate": { "type": "string" },
+        "emailVerified": { "type": "boolean" }
+      },
+      "required": ["uid", "email", "name", "role"]
+    },
+    "books": {
+      "title": "Library Books",
+      "description": "Books in the library catalog",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "author": { "type": "string" },
+        "isbn": { "type": "string" },
+        "department": { "type": "string" },
+        "category": { "type": "string" },
+        "edition": { "type": "string" },
+        "publishedYear": { "type": "number" },
+        "copiesAvailable": { "type": "number" },
+        "totalCopies": { "type": "number" },
+        "shelfLocation": { "type": "string" },
+        "coverImage": { "type": "string" },
+        "description": { "type": "string" },
+        "tags": { "type": "array" }
+      },
+      "required": ["id", "title", "author"]
+    },
+    "borrowRecords": {
+      "title": "Borrow Records",
+      "description": "Student borrowing transactions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "studentId": { "type": "string" },
+        "studentName": { "type": "string" },
+        "studentRollNumber": { "type": "string" },
+        "bookId": { "type": "string" },
+        "bookTitle": { "type": "string" },
+        "bookAuthor": { "type": "string" },
+        "bookCover": { "type": "string" },
+        "borrowDate": { "type": "string" },
+        "dueDate": { "type": "string" },
+        "submittedDate": { "type": "string" },
+        "status": { "type": "string" },
+        "remarks": { "type": "string" }
+      },
+      "required": ["id", "studentId", "bookId"]
+    },
+    "librarians": {
+      "title": "Librarian Profiles",
+      "description": "Library staff and archivist user documents",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "staffId": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "department": { "type": "string" },
+        "position": { "type": "string" }
+      },
+      "required": ["uid", "staffId", "name", "email"]
+    },
+    "settings": {
+      "title": "Library Settings",
+      "description": "Configuration and categories documents",
+      "type": "object",
+      "properties": {
+        "list": { "type": "array" },
+        "finePerDay": { "type": "number" },
+        "maxLoanDays": { "type": "number" },
+        "maxBooksPerStudent": { "type": "number" }
+      }
+    },
+    "bookFeedback": {
+      "title": "Book Comments and Feedback",
+      "description": "Student reviews, ratings, and optimized comment entries",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "bookId": { "type": "string" },
+        "bookTitle": { "type": "string" },
+        "studentId": { "type": "string" },
+        "studentName": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "category": { "type": "string" },
+        "optimizedCategory": { "type": "string" },
+        "priority": { "type": "string" },
+        "status": { "type": "string" },
+        "librarianReply": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "bookId", "studentId", "rating", "comment"]
+    }
+  },
+  "firestore": {
+    "/students/{uid}": {
+      "schema": "students",
+      "description": "Student documents"
+    },
+    "/users/{uid}": {
+      "schema": "users",
+      "description": "User profile documents"
+    },
+    "/books/{id}": {
+      "schema": "books",
+      "description": "Library books"
+    },
+    "/borrowRecords/{id}": {
+      "schema": "borrowRecords",
+      "description": "Borrowing transactions"
+    },
+    "/librarians/{uid}": {
+      "schema": "librarians",
+      "description": "Librarian staff records"
+    },
+    "/settings/{settingId}": {
+      "schema": "settings",
+      "description": "Library configuration documents"
+    },
+    "/bookFeedback/{feedbackId}": {
+      "schema": "bookFeedback",
+      "description": "Book comments and feedback documents"
+    }
+  }
+}

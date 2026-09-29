@@ -1,0 +1,6 @@
+{
+  "name": "Alpha Library Professional System",
+  "description": "A professional library management system featuring searchable catalog, student and staff member profiles, real-time book borrowing tracking, online scholarly research integration, and DevOps & Clean Code insights.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
